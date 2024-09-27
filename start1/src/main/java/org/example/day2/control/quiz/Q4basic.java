@@ -2,7 +2,7 @@ package org.example.day2.control.quiz;
 
 import java.util.Scanner;
 
-public class Q4_basic {
+public class Q4basic {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("여행 지역을 입력하세요: ");

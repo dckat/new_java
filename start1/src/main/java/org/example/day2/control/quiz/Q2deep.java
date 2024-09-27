@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Q2_deep {
+public class Q2deep {
     static int total = 0;
     static int a = 0;
     static int b = 0;
