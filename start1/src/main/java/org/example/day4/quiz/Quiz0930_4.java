@@ -15,9 +15,14 @@ public class Quiz0930_4 {
         int num = sc.nextInt();
         sc.close();
 
-        String riding = ridings[num-1];
-        String mountain = mountains[num-1];
+        if (num < 0 || num > 3) {
+            System.out.println("입력 오류");
+        }
+        else {
+            String riding = ridings[num-1];
+            String mountain = mountains[num-1];
 
-        System.out.println("당신이 가고 싶은 곳인 " + mountain + "은 " + riding + "를 타고 가야 합니다.");
+            System.out.println("당신이 가고 싶은 곳인 " + mountain + "은 " + riding + "를 타고 가야 합니다.");
+        }
     }
 }
