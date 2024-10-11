@@ -17,9 +17,9 @@ public class Q3 {
             }
             long end = System.nanoTime();
             System.out.println(end-start);
+            bf.close();
             is.close();
             reader.close();
-            bf.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
