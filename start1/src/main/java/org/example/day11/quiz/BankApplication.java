@@ -58,10 +58,10 @@ public class BankApplication {
                     for (int i = 0; i < count; i++) {
                         if (accounts[i].accountNum == num1) {
                             System.out.println("계좌가 삭제되었습니다.");
-                            accounts[i] = null;
                             for (int j = i+1; j < count; j++) {
                                 accounts[j-1] = accounts[j];
                             }
+                            accounts[count-1] = null;
                             count--;
                             break;
                         }
