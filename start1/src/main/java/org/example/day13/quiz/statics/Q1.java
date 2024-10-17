@@ -9,9 +9,8 @@ import java.util.Random;
 public class Q1 {
     static Random random = new Random();
     public static void main(String[] args) {
-        Random r = new Random();
         JFrame f = new JFrame();
-        f.setTitle("Button Click Counter");
+        f.setTitle("Random Color Changer");
         f.setSize(300, 300);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
