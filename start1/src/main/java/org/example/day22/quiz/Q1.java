@@ -12,7 +12,12 @@ public class Q1 {
                 st.push(s[i]);
             }
             else if (s[i].equals("커피")) {
-                st.pop();
+                try {
+                    st.pop();
+                }
+                catch (Exception e) {
+                    System.out.println(st.empty());
+                }
             }
         }
         System.out.println(st.empty());
