@@ -1,4 +1,4 @@
-package org.example.jdbc.quiz;
+package org.example.jdbc.quiz.basic;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
