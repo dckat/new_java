@@ -27,7 +27,7 @@ public class DeptDAO {
         // 3. sql 준비 --> sql 객체
         String sql = "insert into dept values(?,?,?)";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, vo.getDeptNo());   // 1은 ?의 번호 (1번부터 시작)
+        ps.setInt(1, vo.getDeptNo());   // 1은 ?의 번호 (1번부터 시작)
         ps.setString(2, vo.getDName());
         ps.setString(3, vo.getLoc());
         System.out.println("3. sql 준비 --> sql 객체 성공!");
@@ -47,7 +47,7 @@ public class DeptDAO {
         // ps가 ?를 세팅하는 역할
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, vo.getDName());   // 1은 ?의 번호 (1번부터 시작)
-        ps.setString(2, vo.getDeptNo());
+        ps.setInt(2, vo.getDeptNo());
         System.out.println("3. sql 준비 --> sql 객체 성공!");
 
         // 4. sql 전송 --> ps가 전송하는 기능을 가지고 있음
@@ -62,13 +62,13 @@ public class DeptDAO {
     public DeptVO one(int deptNo) throws Exception {
         String sql = "select * from dept where deptno = ?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1, deptNo+"");
+        ps.setInt(1, deptNo);
 
         ResultSet rs = ps.executeQuery();
 
         DeptVO vo = new DeptVO();
         if (rs.next()) {
-            String deptno = rs.getString("deptno");
+            int deptno = rs.getInt("deptno");
             String dName = rs.getString("dname");
             String loc = rs.getString("loc");
 
@@ -90,7 +90,7 @@ public class DeptDAO {
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()) {
-            String deptno = rs.getString(1);
+            int deptno = rs.getInt(1);
             String dName = rs.getString(2);
             String loc = rs.getString(3);
 
