@@ -115,4 +115,20 @@ public class MemberDAO2 {
         }
         return vo;
     }
+
+    public boolean login(MemberVO bag) throws Exception {
+        boolean result = false;
+        String sql = "select id from member where id = ? and pw = ?";
+        // 3. sql문 준비
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, bag.getId());
+        ps.setString(2, bag.getPw());
+
+        // 4. sql문 전송 --> 결과가 있으면 result = true;
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            result = true;
+        }
+        return result;
+    }
 }

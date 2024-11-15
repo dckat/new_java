@@ -6,7 +6,7 @@ public class DeptInsertUI {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         System.out.print("deptno 입력>> ");
-        String deptNo = sc.next();
+        int deptNo = sc.nextInt();
         System.out.print("dname 입력>> ");
         String dName = sc.next();
         System.out.print("loc 입력>> ");
