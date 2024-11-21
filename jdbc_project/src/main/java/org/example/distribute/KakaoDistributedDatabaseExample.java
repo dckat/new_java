@@ -34,7 +34,7 @@ public class KakaoDistributedDatabaseExample {
             pstmt.executeUpdate();
             System.out.println("2. sql 전송");
 
-            // 3. 2번에서 얻은 id를 이용해서 몽고db에 주문정보 넣기
+            // 3. 2번에서 얻은 id를 이용해서 몽고db에 로그정보 넣기
             ResultSet rs = pstmt.getGeneratedKeys();
             int userId = 0;
             if (rs.next()) {
@@ -47,8 +47,8 @@ public class KakaoDistributedDatabaseExample {
             MongoCollection<Document> logCollection = mongoDatabase.getCollection("activity_logs");
             System.out.println("3. mongoDB 연결");
 
-            //   3-2. document를 만들어서 전송
-            //JSON형태의 값: String, int, float, array
+            //   3-2. document 만들어서 전송
+            //   JSON 형태의 값: String, int, float, array
             Document activityLog = new Document();
             activityLog.append("userId", userId);
             activityLog.append("activity", "Login");
@@ -62,10 +62,10 @@ public class KakaoDistributedDatabaseExample {
             logCollection.insertOne(activityLog);
             logCollection.insertOne(activityLog2);
 
-            System.out.println("Inserted order for user ID: " + userId);
+            System.out.println("Inserted log for user ID: " + userId);
             System.out.println("4. Send to MongoDB");
 
-            // 4. 회원정보는 mysql 검색, 회원주문정보보기는 mongodb 검색하여 분산
+            // 4. 회원정보는 mysql 검색, 로그기록 보기는 mongodb 검색하여 분산
             String selectUserSQL = "SELECT * FROM users WHERE id = ?";
             PreparedStatement selectPstmt = mysqlConnection.prepareStatement(selectUserSQL);
             selectPstmt.setInt(1, userId);
