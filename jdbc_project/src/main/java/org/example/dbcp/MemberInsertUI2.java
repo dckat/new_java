@@ -19,8 +19,8 @@ public class MemberInsertUI2 {
         // MemberDAO 클래스 사용해서 insert() 호출
         MemberDAO2 dao = new MemberDAO2();
         MemberVO vo = new MemberVO();
-        vo.setID(idValue);
-        vo.setPW(pwValue);
+        vo.setId(idValue);
+        vo.setPw(pwValue);
         vo.setName(nameValue);
         vo.setTel(telValue);
         dao.insert(vo);
