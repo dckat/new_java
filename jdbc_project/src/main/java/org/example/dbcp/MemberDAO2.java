@@ -1,8 +1,8 @@
 package org.example.dbcp;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class MemberDAO2 {
     private Connection con;  // 전역변수가 됨. null로 초기화
@@ -22,7 +22,7 @@ public class MemberDAO2 {
         // ps가 ?를 세팅하는 역할
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1, vo.getId());   // 1은 ?의 번호 (1번부터 시작)
-        ps.setString(2, vo.getPW());
+        ps.setString(2, vo.getPw());
         ps.setString(3, vo.getName());
         ps.setString(4, vo.getTel());
         System.out.println("3. sql 준비 --> sql 객체 성공!");
@@ -70,5 +70,23 @@ public class MemberDAO2 {
         System.out.println("실행된 row수 --> " + result + "개");
 
         dbcp.freeConnection(con, ps);
+    }
+
+    public MemberVO one(String id) throws Exception {
+        con = dbcp.getConnection();
+        String sql = "select * from member where id = ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, id);
+
+        ResultSet rs = ps.executeQuery();  // 테이블 형태로 mysql로 부터 받아와야 할 때 사용
+
+        MemberVO vo = new MemberVO();
+        if (rs.next()) {
+            vo.setId(rs.getString("id"));   // 컬럼명 선호
+            vo.setPw(rs.getString("pw"));  // 인덱스 사용 가능 (1번부터 시작)
+            vo.setName(rs.getString("name"));
+            vo.setTel(rs.getString("tel"));
+        }
+        return vo;
     }
 }
