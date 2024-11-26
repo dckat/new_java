@@ -19,6 +19,7 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.24'  // compile을 implementation으로 변경
     annotationProcessor 'org.projectlombok:lombok:1.18.24'  // annotationProcessor는 그대로 유지
     implementation 'org.mongodb:mongo-java-driver:3.2.2'    // 몽고db용
+    implementation 'com.zaxxer:HikariCP:5.0.1'
 }
 
 test {
